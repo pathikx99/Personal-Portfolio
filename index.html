@@ -1322,7 +1322,23 @@ footer{max-width:none;width:100%;padding:2.5rem clamp(1.25rem,5vw,4.5rem);border
 @media(max-width:768px){nav{padding:1rem 1.25rem}#hero{min-height:720px;height:auto}.hero-content{padding:7rem 1.25rem 6rem}.hero-name{font-size:clamp(3.4rem,13vw,6rem)}.hero-proof{gap:.65rem;font-size:.58rem}section{padding:4.5rem 1.25rem}.about-grid,.contact-grid{grid-template-columns:1fr}.projects-grid,.skills-grid{grid-template-columns:1fr}.project-visual{min-height:190px}.timeline{padding-left:1rem}.timeline-item{padding-left:1.75rem}.timeline-dot{left:-1rem}}
 @media(max-width:520px){.hero-name{font-size:clamp(3.15rem,14vw,4.4rem)}.hero-btns{align-items:stretch;flex-direction:column;max-width:330px}.hero-btns a{text-align:center}.hero-proof{max-width:320px;line-height:1.8}.venture-grid{grid-template-columns:1fr}.venture-featured{grid-column:auto}.venture-card{min-height:280px}.process-grid{grid-template-columns:1fr 1fr;gap:1.5rem .9rem}.form-row-2{grid-template-columns:1fr}.contact-text{overflow-wrap:anywhere}.timeline-header{flex-direction:column}footer{flex-direction:column;text-align:center}}
 
-  </style>
+  
+/* Hero layout correction: prevent oversized heading and horizontal overflow */
+html{scroll-behavior:smooth;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box}
+#hero{min-height:max(720px,100svh);height:auto;padding:96px 0 64px!important;overflow:hidden;display:flex;align-items:center}
+.hero-content{width:100%;max-width:1440px;margin:0 auto;padding:clamp(3rem,7vh,6rem) clamp(1.25rem,6vw,6rem);text-align:left}
+.hero-name{width:100%;max-width:1200px;font-size:clamp(3.25rem,7.1vw,7.25rem);line-height:.98;letter-spacing:-.075em;overflow-wrap:normal;word-break:normal;margin:0 0 1.5rem}
+.hero-name br{display:block}
+.hero-name .hero-accent{display:block;color:var(--cyan);max-width:1150px}
+.hero-typewriter{margin:1rem 0 .8rem;min-height:1.8rem}
+.hero-sub{max-width:700px;margin:0 0 2rem;font-size:clamp(1rem,1.3vw,1.15rem);line-height:1.75}
+.hero-proof{margin-top:2.25rem}
+@media(min-width:1500px){.hero-content{padding-left:clamp(6rem,10vw,10rem);padding-right:clamp(6rem,10vw,10rem)}.hero-name{font-size:clamp(6rem,6.6vw,7.5rem)}}
+@media(max-width:768px){#hero{min-height:100svh;padding:76px 0 44px!important}.hero-content{padding:3rem 1.25rem}.hero-name{font-size:clamp(3.1rem,11.8vw,5.8rem);letter-spacing:-.07em;line-height:1.01}.hero-name .hero-accent{max-width:100%}.hero-proof{gap:.65rem;line-height:1.8}}
+@media(max-width:420px){.hero-name{font-size:clamp(2.75rem,12vw,3.4rem)}.hero-sub{font-size:.98rem}.hero-btns{width:100%}.hero-btns a{width:100%;text-align:center}}
+
+</style>
 </head>
 
 <body>
