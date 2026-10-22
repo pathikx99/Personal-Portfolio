@@ -1338,6 +1338,44 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 @media(max-width:768px){#hero{min-height:100svh;padding:76px 0 44px!important}.hero-content{padding:3rem 1.25rem}.hero-name{font-size:clamp(3.1rem,11.8vw,5.8rem);letter-spacing:-.07em;line-height:1.01}.hero-name .hero-accent{max-width:100%}.hero-proof{gap:.65rem;line-height:1.8}}
 @media(max-width:420px){.hero-name{font-size:clamp(2.75rem,12vw,3.4rem)}.hero-sub{font-size:.98rem}.hero-btns{width:100%}.hero-btns a{width:100%;text-align:center}}
 
+/* Modern polish pass: stronger hierarchy, depth, motion, and responsive details */
+:root{--bg:#080908;--bg2:#10120f;--bg3:#171a15;--cyan:#d8ff65;--purple:#c7b8ff;--text:#f5f5ed;--text2:#b8bbae;--text3:#7c8275;--glass:rgba(255,255,255,.04);--glass-border:rgba(216,255,101,.19);--glass-border2:rgba(199,184,255,.22)}
+body{background:radial-gradient(ellipse at 78% 8%,rgba(199,184,255,.055),transparent 27%),radial-gradient(ellipse at 10% 34%,rgba(216,255,101,.035),transparent 28%),var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+::selection{background:var(--cyan);color:#10120c}
+a{transition:color .22s ease,border-color .22s ease,background .22s ease,transform .22s ease}
+nav{height:72px;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 1px 0 rgba(255,255,255,.035)}
+.nav-logo{font-size:1.35rem;letter-spacing:-.09em}.nav-logo::after{height:2px}
+.nav-links a{position:relative;padding:.45rem 0;color:#b8bbae}.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--cyan);transition:right .25s ease}.nav-links a:hover{color:var(--text)}.nav-links a:hover::after{right:0}
+#hero{isolation:isolate;min-height:max(760px,100svh);position:relative}
+#hero::before{content:"";position:absolute;z-index:0;inset:0;pointer-events:none;background:radial-gradient(ellipse at 72% 45%,rgba(216,255,101,.075),transparent 32%),radial-gradient(ellipse at 92% 18%,rgba(199,184,255,.08),transparent 27%)}
+#hero::after{content:"";position:absolute;z-index:0;pointer-events:none;right:7%;top:22%;width:clamp(180px,25vw,380px);aspect-ratio:1;border:1px solid rgba(216,255,101,.13);border-radius:50%;box-shadow:0 0 0 34px rgba(216,255,101,.018),0 0 0 70px rgba(199,184,255,.018);opacity:.65}
+.hero-content{z-index:1}.hero-tag{font-size:.68rem;letter-spacing:1.8px}
+.hero-name{position:relative;z-index:1;text-wrap:balance;max-width:1120px;font-size:clamp(3.4rem,7.3vw,7.4rem);line-height:.96;letter-spacing:-.078em}
+.hero-name .hero-accent{text-shadow:0 0 48px rgba(216,255,101,.09)}
+.hero-typewriter{font-size:clamp(1rem,1.6vw,1.3rem);letter-spacing:-.025em}.hero-sub{font-size:clamp(1rem,1.25vw,1.13rem);max-width:640px}
+.btn-primary,.btn-secondary{min-height:50px;display:inline-flex;align-items:center;justify-content:center;gap:.65rem;transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+.btn-primary{box-shadow:0 6px 24px rgba(216,255,101,.08)}.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(216,255,101,.2)}
+.btn-secondary{backdrop-filter:blur(8px)}.btn-secondary:hover{transform:translateY(-3px);background:rgba(216,255,101,.06)}
+.hero-proof{font-size:.62rem;letter-spacing:1.4px}
+.section-title{text-wrap:balance}
+.about-manifesto{background:linear-gradient(145deg,rgba(255,255,255,.018),transparent);padding:0 1rem 1rem;border-radius:0 0 16px 16px}
+.venture-card,.project-card,.skill-card,.timeline-card,.cert-card,.contact-form{box-shadow:0 12px 40px rgba(0,0,0,.12);transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s ease,box-shadow .3s ease}
+.venture-card:hover,.skill-card:hover,.timeline-card:hover,.cert-card:hover{transform:translateY(-5px);box-shadow:0 20px 55px rgba(0,0,0,.24)}
+.venture-card{background:linear-gradient(145deg,rgba(255,255,255,.035),transparent 55%),#12140f}.venture-featured{background:radial-gradient(ellipse at 85% 0%,rgba(216,255,101,.11),transparent 45%),#151811}.venture-mark{font-size:2.6rem}
+.project-visual{background:radial-gradient(ellipse at 50% 0%,rgba(199,184,255,.12),transparent 58%),radial-gradient(ellipse at 75% 100%,rgba(216,255,101,.07),transparent 50%),#141611}
+.project-card:nth-child(even) .project-visual{background:radial-gradient(ellipse at 50% 0%,rgba(216,255,101,.11),transparent 58%),#141611}
+.visual-window{transition:transform .35s ease,border-color .35s ease}.project-card:hover .visual-window{transform:rotate(0) translateY(-4px);border-color:rgba(216,255,101,.4)}
+.project-card:hover .project-title{color:var(--cyan)}.filter-btn{border-radius:999px;transition:all .2s ease}
+.services-section{position:relative;overflow:hidden;background:linear-gradient(125deg,#d8ff65 0%,#c9f451 60%,#dfff91 100%)}
+.services-section::before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(20,24,15,.12);border-radius:50%;right:-180px;top:-180px;box-shadow:0 0 0 40px rgba(20,24,15,.025),0 0 0 85px rgba(20,24,15,.02);pointer-events:none}
+.service-card{background:rgba(255,255,255,.42);backdrop-filter:blur(12px);transition:transform .25s ease,background .25s ease,box-shadow .25s ease}.service-card:hover{transform:translateY(-6px);background:rgba(255,255,255,.62);box-shadow:0 18px 45px rgba(44,58,13,.12)}
+.service-icon{width:52px;height:52px;display:grid;place-items:center;border:1px solid rgba(20,24,15,.16);border-radius:15px;background:rgba(255,255,255,.26)}
+.process-grid>div{transition:transform .25s ease}.process-grid>div:hover{transform:translateY(-4px)}
+.form-input{transition:border-color .2s,box-shadow .2s}.form-input:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(216,255,101,.08)}
+.contact-form{border-radius:22px}footer{background:rgba(255,255,255,.012)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+@media(max-width:768px){nav{height:64px}.hero-name{font-size:clamp(3.1rem,11.8vw,5.4rem)}#hero::after{right:-18%;top:18%;opacity:.3}.hero-proof{max-width:100%}.venture-card:hover,.service-card:hover,.project-card:hover{transform:none}}
+@media(max-width:420px){.hero-name{font-size:clamp(2.65rem,11.7vw,3.25rem)}.hero-tag{font-size:.59rem;letter-spacing:1.2px}.hero-proof{font-size:.54rem}}
 </style>
 </head>
 
@@ -1514,7 +1552,7 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 
       <article class="project-card fade-up" data-category="commerce"><div class="project-visual"><span class="visual-label">FOOD COMMERCE / 04</span><div class="visual-window"><span></span><span></span><span></span><span></span><span></span></div></div><div class="project-content"><div><div class="project-num">04 — Food Ordering Platform</div><h3 class="project-title">Mintara Bites</h3><div class="project-live">mintarabites.com</div></div><p class="project-desc">A food ordering platform with authenticated customer flows, role-based admin access, order tracking, and operational notifications integrated into the commerce journey.</p><div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">Node.js</span><span class="tech-tag">Supabase</span><span class="tech-tag">JWT</span></div><div class="project-links"><a href="https://mintarabites.com" target="_blank" rel="noopener noreferrer" class="project-link live">↗ Visit website</a></div></div></article>
 
-      <article class="project-card fade-up" data-category="product"><div class="project-visual"><span class="visual-label">SPORTS OPERATIONS / 05</span><div class="visual-window"><span></span><span></span><span></span><span></span><span></span></div></div><div class="project-content"><div><div class="project-num">05 — Tournament Management</div><h3 class="project-title">Scorify</h3><div class="project-live">Competition operations platform</div></div><p class="project-desc">Tournament tooling for 500+ registered players and 50+ teams, featuring live leaderboards, automated fixture generation, role-based APIs, and database performance improvements.</p><div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">Node.js</span><span class="tech-tag">Django</span><span class="tech-tag">MySQL</span></div><div class="project-links"><a href="https://github.com/pathik-9902" target="_blank" rel="noopener noreferrer" class="project-link">⌥ GitHub profile</a></div></div></article>
+      <article class="project-card fade-up" data-category="product"><div class="project-visual"><span class="visual-label">SPORTS OPERATIONS / 05</span><div class="visual-window"><span></span><span></span><span></span><span></span><span></span></div></div><div class="project-content"><div><div class="project-num">05 — Tournament Management</div><h3 class="project-title">Scorify</h3><div class="project-live">Competition operations platform</div></div><p class="project-desc">Tournament tooling for 500+ registered players and 50+ teams, featuring live leaderboards, automated fixture generation, role-based APIs, and database performance improvements.</p><div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">Node.js</span><span class="tech-tag">Django</span><span class="tech-tag">MySQL</span></div><div class="project-links"><a href="https://github.com/pathikx99" target="_blank" rel="noopener noreferrer" class="project-link">⌥ GitHub profile</a></div></div></article>
       
       <article class="project-card fade-up" data-category="ai"><div class="project-visual"><span class="visual-label">GROWTH AUTOMATION / 06</span><div class="visual-window"><span></span><span></span><span></span><span></span><span></span></div></div><div class="project-content"><div><div class="project-num">06 — Marketing Operations</div><h3 class="project-title">AI Lead &amp; Campaign Workflows</h3><div class="project-live">ORVX AI / Venture work</div></div><p class="project-desc">A service concept for connecting lead capture, qualification, campaign operations, and follow-up into clearer workflows. Scope can be tailored to a business's existing tools and process.</p><div class="project-tech"><span class="tech-tag">AI workflows</span><span class="tech-tag">CRM integrations</span><span class="tech-tag">Automation</span></div><div class="project-links"><a href="#contact" class="project-link live">↗ Discuss an automation</a></div></div></article>
 
@@ -1676,7 +1714,7 @@ html{scroll-behavior:smooth;overflow-x:hidden}
           <div class="contact-icon">⌥</div>
           <div class="contact-text">
             <div class="contact-label">GitHub</div>
-            <a href="https://github.com/pathik-9902" target="_blank">github.com/pathik-9902</a>
+            <a href="https://github.com/pathikx99" target="_blank">github.com/pathikx99</a>
           </div>
         </div>
         <div class="contact-item">
