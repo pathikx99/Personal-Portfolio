@@ -1786,10 +1786,10 @@ nav{height:72px;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);bo
             <textarea class="form-input" id="fmessage" name="message" placeholder="The problem, your idea, timeline, or what success looks like..." required></textarea>
           </div>
           <button class="submit-btn" id="submitBtn" type="button" onclick="submitForm()">
-            <span class="btn-text">Prepare email <span aria-hidden="true">↗</span></span>
+            <span class="btn-text">Send inquiry <span aria-hidden="true">↗</span></span>
             <div class="spinner"></div>
           </button>
-          <p class="form-footnote">This opens your email app with the project details ready to send.</p>
+          <p class="form-footnote">Your inquiry will be sent directly to Pathik’s email. Please wait for the confirmation message.</p>
         </div>
         <div class="form-success" id="formSuccess" role="status">
           Your email draft is ready. Send it from your email app to complete the inquiry.
@@ -1957,8 +1957,8 @@ nav{height:72px;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);bo
       });
     });
 
-    // CONTACT FORM
-    function submitForm() {
+    // CONTACT FORM — sends submissions through FormSubmit to Pathik's inbox.
+    async function submitForm() {
       const name = document.getElementById('fname').value.trim();
       const email = document.getElementById('femail').value.trim();
       const service = document.getElementById('fsubject').value;
@@ -1974,12 +1974,45 @@ nav{height:72px;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);bo
       emailField.classList.toggle('error', !emailOk);
       if (!emailOk) valid = false;
       if (!valid) { const first = document.querySelector('.form-input.error'); if (first) first.focus(); return; }
+
       const labels = {ai:'AI & Workflow Automation',web:'Websites & Digital Products',growth:'Product & Growth Systems',other:'Partnership / Something else'};
-      const subjectLine = encodeURIComponent('Portfolio enquiry: ' + (labels[service] || service));
-      const body = encodeURIComponent('Hi Pathik,\n\n' + message + '\n\n— ' + name + '\nReply to: ' + email);
-      document.getElementById('formContent').style.display = 'none';
-      document.getElementById('formSuccess').classList.add('show');
-      window.location.href = 'mailto:pathik.patel992002@gmail.com?subject=' + subjectLine + '&body=' + body;
+      const button = document.getElementById('submitBtn');
+      const buttonText = button.querySelector('.btn-text');
+      button.disabled = true;
+      button.classList.add('loading');
+      buttonText.textContent = 'Sending…';
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/pathik.patel992002@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            service: labels[service] || service,
+            message,
+            _subject: 'Portfolio enquiry: ' + (labels[service] || service),
+            _captcha: 'false'
+          })
+        });
+        const result = await response.json();
+        if (!response.ok || result.success !== 'true') throw new Error('Submission was not accepted');
+        document.getElementById('formContent').style.display = 'none';
+        document.getElementById('formSuccess').textContent = 'Thanks — your inquiry has been submitted. Pathik will receive it by email.';
+        document.getElementById('formSuccess').classList.add('show');
+      } catch (error) {
+        button.disabled = false;
+        button.classList.remove('loading');
+        buttonText.innerHTML = 'Try again <span aria-hidden="true">↗</span>';
+        let notice = document.getElementById('formError');
+        if (!notice) {
+          notice = document.createElement('p');
+          notice.id = 'formError';
+          notice.className = 'form-footnote';
+          notice.setAttribute('role', 'alert');
+          button.insertAdjacentElement('afterend', notice);
+        }
+        notice.textContent = 'The inquiry could not be sent. Please try again in a moment or email pathik.patel992002@gmail.com directly.';
+      }
     }
     document.querySelectorAll('.service-cta').forEach(link => {
       link.addEventListener('click', () => { document.getElementById('fsubject').value = link.dataset.service; });
